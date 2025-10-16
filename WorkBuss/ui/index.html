@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusWork - Emprego de Motorista</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" id="busworkPanel">
+        <div class="panel">
+            <!-- Header -->
+            <div class="panel-header">
+                <div class="header-content">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 6v6"></path>
+                            <path d="M15 6v6"></path>
+                            <path d="M2 12h19.6"></path>
+                            <path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"></path>
+                            <circle cx="7" cy="18" r="2"></circle>
+                            <circle cx="17" cy="18" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="header-text">
+                        <h1>Motorista de Ônibus</h1>
+                        <p>Transporte Público Municipal</p>
+                    </div>
+                </div>
+                <button class="close-btn" id="closeBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="panel-content">
+                <!-- Job Info -->
+                <div class="info-section">
+                    <div class="info-card">
+                        <div class="info-icon salary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">Pagamento por Parada</span>
+                            <span class="info-value" id="salaryRange">R$ 63 - R$ 72</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon route">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="10" r="3"></circle>
+                                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"></path>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">Total de Paradas</span>
+                            <span class="info-value" id="totalStops">22 Pontos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="description-section">
+                    <h3>Sobre o Emprego</h3>
+                    <p>Como motorista de ônibus, você será responsável por transportar passageiros pela cidade seguindo uma rota específica. Passe por todos os pontos de parada marcados no mapa e receba seu pagamento a cada parada concluída.</p>
+                    
+                    <div class="requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Dirija com cuidado e respeite as leis de trânsito</li>
+                            <li>Siga a rota indicada no GPS</li>
+                            <li>Pare em todos os pontos de ônibus marcados</li>
+                            <li>Pressione <strong>F7</strong> para finalizar o trabalho a qualquer momento</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Status Display (hidden by default) -->
+                <div class="status-section" id="statusSection" style="display: none;">
+                    <div class="status-card">
+                        <div class="status-header">
+                            <span class="status-badge active">Em Serviço</span>
+                            <span class="status-progress" id="progressText">Parada 1/22</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="panel-footer">
+                <button class="btn btn-secondary" id="cancelBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    Cancelar
+                </button>
+                <button class="btn btn-primary" id="startBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Iniciar Trabalho
+                </button>
+                <button class="btn btn-danger" id="stopBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="6" y="6" width="12" height="12"></rect>
+                    </svg>
+                    Finalizar Trabalho
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
